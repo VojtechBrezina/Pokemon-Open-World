@@ -15,7 +15,7 @@ import pokemonopenworld.GameResource;
 
 /**
  *
- * @author Vojta
+ * @author
  */
 public class AtlasGameResource extends GameResource {
     private Image atlasImage;
