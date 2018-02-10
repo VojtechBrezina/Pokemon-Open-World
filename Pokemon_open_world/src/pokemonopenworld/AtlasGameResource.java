@@ -47,5 +47,5 @@ public class AtlasGameResource extends GameResource {
         super(name);
     }
     
-    
+    //
 }
