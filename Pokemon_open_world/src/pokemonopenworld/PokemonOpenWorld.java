@@ -14,8 +14,8 @@
  */
 package pokemonopenworld;
 
-import java.io.IOException;
 import java.util.Scanner;
+import pokemonopenworld.gameresources.*;
 
 /**
  *

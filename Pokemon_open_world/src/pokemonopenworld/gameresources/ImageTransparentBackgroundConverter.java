@@ -5,27 +5,23 @@
  *  |   __| . | '_| -_|     | . |   |  | . | . | -_|   |  | | | | . |  _| | . |
  *  |__|  |___|_,_|___|_|_|_|___|_|_|  |___|  _|___|_|_|  |_____|___|_| |_|___|
  *                                         |_|
- *  10.02.2018
+ *  12.02.2018
  */
-package pokemonopenworld;
+package pokemonopenworld.gameresources;
 
 import java.awt.*;
 import java.awt.image.*;
-import pokemonopenworld.GameResource;
 
 /**
  *
- * @author
+ * @autho
  */
-public class AtlasGameResource extends GameResource {
-    private Image atlasImage;
-    //private int 
-    
+public class ImageTransparentBackgroundConverter {
     //copied from http://www.java2s.com/Code/Java/2D-Graphics-GUI/MakeimageTransparency.htm
-    private static Image makeColorTransparent(Image image, final Color color) {
-    ImageFilter filter = new RGBImageFilter() {
+    private static final Color TRANSPARENT_COLOR = new Color(255, 0, 255); 
+    private static final ImageFilter FILTER = new RGBImageFilter() {
       // the color we are looking for... Alpha bits are set to opaque
-      public int markerRGB = color.getRGB() | 0xFF000000;
+      public int markerRGB = TRANSPARENT_COLOR.getRGB() | 0xFF000000;
 
       @Override
       public final int filterRGB(int x, int y, int rgb) {
@@ -38,14 +34,8 @@ public class AtlasGameResource extends GameResource {
         }
       }
     };
-
-    ImageProducer ip = new FilteredImageSource(image.getSource(), filter);
-    return Toolkit.getDefaultToolkit().createImage(ip);
+    public static Image makeBackgroundTransparent(Image image) {
+        ImageProducer ip = new FilteredImageSource(image.getSource(), FILTER);
+        return Toolkit.getDefaultToolkit().createImage(ip);
   }
-    
-    public AtlasGameResource(String name) {
-        super(name);
-    }
-    
-    //
 }

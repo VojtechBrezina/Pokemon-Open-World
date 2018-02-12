@@ -7,7 +7,7 @@
  *                                         |_|
  *  10.02.2018
  */
-package pokemonopenworld;
+package pokemonopenworld.gameresources;
 
 import java.awt.*;
 import java.awt.image.*;

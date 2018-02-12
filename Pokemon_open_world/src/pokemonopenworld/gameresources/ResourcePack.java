@@ -6,7 +6,7 @@
  *                                       |_|
  *  08.02.2018
  */
-package pokemonopenworld;
+package pokemonopenworld.gameresources;
 
 /**
  *

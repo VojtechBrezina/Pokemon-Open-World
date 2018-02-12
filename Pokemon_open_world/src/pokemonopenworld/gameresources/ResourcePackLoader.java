@@ -7,37 +7,24 @@
  *                                         |_|
  *  10.02.2018
  */
-package pokemonopenworld;
+package pokemonopenworld.gameresources;
 
 /**
  *
- * @author
+ * @author 
  */
-public class GameResource {
-    protected String name;
+public class ResourcePackLoader extends Thread {
+    private ResourcePack pack;
     
-    public GameResource(String name){
-        this.name = name;
+    
+    public ResourcePackLoader(ResourcePack pack){
+        this.pack = pack;
     }
     
-    public String getName(){
-        return name;
-    }
     
-    public boolean getEmpty(){
-        return true;
-    }
-    
-    public boolean load(String path){
-        return true;
-    }
     
     @Override
-    public String toString(){
-        String toReturn = "";
-        if(getEmpty())
-            toReturn += "empty ";
-        toReturn += "game resource called " + name;
-        return toReturn;
+    public void run(){
+        
     }
 }
