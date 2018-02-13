@@ -8,15 +8,18 @@
  */
 package pokemonopenworld.gameresources;
 
+import java.net.*;
+
 /**
  *
  * @author 
  */
 public class ResourcePack {
     private final String name;
-    private final String path;
+    private final URL path;
     private State state;
     private int loadingProgress;
+    private GameResource[] resources;
     
     private static final int RESOURCES_COUNT = 2;
     
@@ -27,22 +30,16 @@ public class ResourcePack {
         READY
     }
     
-    
-    private void init(){
+        
+    public ResourcePack() throws MalformedURLException{
+        this(new URL("VanillaPack"));
+    }
+    public ResourcePack(URL path){
+        name = path.getFile(); //TODO: packs should be named by their info.txt file
+        this.path = path;
         state = State.EMPTY;
         loadingProgress = 0;
-    }
-    
-        
-    public ResourcePack(){
-        name = "Vanilla";
-        path = "";
-        init();
-    }
-    public ResourcePack(String path){
-        name = path.substring(path.lastIndexOf("/")); //TODO: packs should be named by their info.txt file
-        this.path = path;
-        init();
+        resources = new GameResource[RESOURCES_COUNT];
     }
     
     @Override
@@ -61,7 +58,15 @@ public class ResourcePack {
         return toReturn;
     }
     
-    public double getLoadingProgress(){
-            return RESOURCES_COUNT / loadingProgress * 100.0;
+    public int getLoadingProgress(){
+        return loadingProgress;
+    }
+    
+    public double getLoadingPercentage(){
+        return RESOURCES_COUNT / loadingProgress * 100.0;
+    }
+    
+    public void load(){
+        
     }
 }

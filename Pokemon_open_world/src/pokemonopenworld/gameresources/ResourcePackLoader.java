@@ -22,9 +22,8 @@ public class ResourcePackLoader extends Thread {
     }
     
     
-    
     @Override
     public void run(){
-        
+        pack.load();
     }
 }

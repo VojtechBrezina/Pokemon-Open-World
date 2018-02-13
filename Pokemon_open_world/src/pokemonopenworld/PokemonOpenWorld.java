@@ -14,6 +14,7 @@
  */
 package pokemonopenworld;
 
+import java.net.MalformedURLException;
 import java.util.Scanner;
 import pokemonopenworld.gameresources.*;
 
@@ -28,8 +29,9 @@ public class PokemonOpenWorld {
     private static boolean ended = false;
     /**
      * @param args the command line arguments
+     * @throws java.net.MalformedURLException
      */
-    public static void main(String[] args){
+    public static void main(String[] args) throws MalformedURLException{
         scanner = new Scanner(System.in);
         //window = new MyWindow(640, 360, "Pokemon open world");
         

@@ -24,7 +24,6 @@ public class AtlasGameResource extends GameResource {
     public AtlasGameResource(String name,URL path) throws MalformedURLException {
         super(name, path);
     }
-    
     @Override
     public boolean load(){
         return false;
