@@ -28,8 +28,8 @@ public class GameResource {
         return true;
     }
     
-    public boolean load(String path){
-        return true;
+    public boolean load(){
+        return false;
     }
     
     @Override

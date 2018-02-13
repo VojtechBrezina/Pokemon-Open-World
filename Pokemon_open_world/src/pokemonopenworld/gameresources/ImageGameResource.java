@@ -10,9 +10,9 @@
 package pokemonopenworld.gameresources;
 
 import java.awt.*;
-import java.awt.image.*;
-import javax.swing.*;
 import java.net.*;
+import javax.swing.*;
+
 
 /**
  *
@@ -20,42 +20,41 @@ import java.net.*;
  */
 public class ImageGameResource extends GameResource {
     private Image image;
-    private static final Color TRANSPARENT_BACKGROUND_COLOR = new Color(255, 0, 255);
+    private final boolean fromAtlas;
+    private final AtlasGameResource sourceAtlas;
+    private final int atlasPos;
+    private final String path;
 
-    //copied from http://www.java2s.com/Code/Java/2D-Graphics-GUI/MakeimageTransparency.htm
-    private static Image makeColorTransparent(Image image, final Color color) {
-    ImageFilter filter = new RGBImageFilter() {
-      // the color we are looking for... Alpha bits are set to opaque
-      public int markerRGB = color.getRGB() | 0xFF000000;
-
-      @Override
-      public final int filterRGB(int x, int y, int rgb) {
-        if ((rgb | 0xFF000000) == markerRGB) {
-          // Mark the alpha bits as zero - transparent
-          return 0x00FFFFFF & rgb;
-        } else {
-          // nothing to do
-          return rgb;
-        }
-      }
-    };
-
-    ImageProducer ip = new FilteredImageSource(image.getSource(), filter);
-    return Toolkit.getDefaultToolkit().createImage(ip);
-  }
-    
-    public ImageGameResource(String name) {
+    public ImageGameResource(String name, String path) {
         super(name);
         image = null;
+        this.path = path;
+        fromAtlas = false;
+        sourceAtlas = null;
+        atlasPos = -1;
+    }
+    public ImageGameResource(String name, AtlasGameResource source, int atlasPos) {
+        super(name);
+        image = null;
+        fromAtlas = true;
+        sourceAtlas = source;
+        this.atlasPos = atlasPos;
+        path = "";
     }
     
     @Override
-    public boolean load(String path){
-        URL url = getClass().getResource(path);
-        ImageIcon icon = new ImageIcon(url);
-        image = icon.getImage();
-        image = makeColorTransparent(image, TRANSPARENT_BACKGROUND_COLOR);
-        return getEmpty();
+    public boolean load(){
+        if(fromAtlas){
+            URL url = getClass().getResource(path);
+            ImageIcon icon = new ImageIcon(url);
+            image = icon.getImage();
+            image = ImageTransparentBackgroundConverter.makeBackgroundTransparent(image);
+        }else{
+            if(!sourceAtlas.getEmpty()){
+                //when the AtlasGameResource class is ready to use
+            }
+        }
+        return !getEmpty();
     }
     
     public Image getImage(){
@@ -70,7 +69,12 @@ public class ImageGameResource extends GameResource {
     @Override
     public String toString(){
         String toReturn = "";
-        toReturn += "image game resource called \"" + name + "\" and ";
+        toReturn += "image game resource located ";
+        if(fromAtlas)
+            toReturn += "in atlas (" + sourceAtlas.toString() + ")";
+        else
+            toReturn += "on path" + path;
+        toReturn += " and called \"" + name + "\" and ";
         if(!getEmpty())
             toReturn += "sized " + image.getWidth(null) + "x" + image.getHeight(null);
         else{
