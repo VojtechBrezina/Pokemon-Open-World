@@ -9,15 +9,19 @@
  */
 package pokemonopenworld.gameresources;
 
+import java.net.*;
+
 /**
  *
  * @author
  */
 public class GameResource {
     protected String name;
+    protected URL path;
     
-    public GameResource(String name){
+    public GameResource(String name, URL path) throws MalformedURLException{
         this.name = name;
+        this.path = path;
     }
     
     public String getName(){

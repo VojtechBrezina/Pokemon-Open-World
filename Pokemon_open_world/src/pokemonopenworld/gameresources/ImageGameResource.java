@@ -23,34 +23,31 @@ public class ImageGameResource extends GameResource {
     private final boolean fromAtlas;
     private final AtlasGameResource sourceAtlas;
     private final int atlasPos;
-    private final String path;
 
-    public ImageGameResource(String name, String path) {
-        super(name);
+    public ImageGameResource(String name, URL path) throws MalformedURLException {
+        super(name, path);
         image = null;
-        this.path = path;
         fromAtlas = false;
         sourceAtlas = null;
         atlasPos = -1;
     }
-    public ImageGameResource(String name, AtlasGameResource source, int atlasPos) {
-        super(name);
+    public ImageGameResource(String name, AtlasGameResource source, int atlasPos) throws MalformedURLException {
+        super(name, null);
         image = null;
         fromAtlas = true;
         sourceAtlas = source;
         this.atlasPos = atlasPos;
-        path = "";
     }
     
     @Override
     public boolean load(){
         if(fromAtlas){
-            URL url = getClass().getResource(path);
-            ImageIcon icon = new ImageIcon(url);
+            ImageIcon icon = new ImageIcon(path);
             image = icon.getImage();
             image = ImageTransparentBackgroundConverter.makeBackgroundTransparent(image);
         }else{
             if(!sourceAtlas.getEmpty()){
+                
                 //when the AtlasGameResource class is ready to use
             }
         }

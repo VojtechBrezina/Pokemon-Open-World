@@ -10,7 +10,7 @@
 package pokemonopenworld.gameresources;
 
 import java.awt.*;
-import java.awt.image.*;
+import java.net.*;
 
 /**
  *
@@ -18,12 +18,25 @@ import java.awt.image.*;
  */
 public class AtlasGameResource extends GameResource {
     private Image atlasImage;
+    private AtlasGameResourceExtractingInstruction[][] extractingInstructions;
+    private Image[] result;
  
-    public AtlasGameResource(String name) {
-        super(name);
+    public AtlasGameResource(String name,URL path) throws MalformedURLException {
+        super(name, path);
     }
     
+    @Override
+    public boolean load(){
+        return false;
+    }
+    
+    @Override
     public boolean getEmpty(){
         return atlasImage == null;
+    }
+    
+    
+    public Image getResult(int position){
+        return result[position];
     }
 }
