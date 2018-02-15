@@ -38,4 +38,4 @@ public class AtlasGameResource extends GameResource {
     public Image getResult(int position){
         return result[position];
     }
-}
+} 
