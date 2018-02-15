@@ -6,7 +6,7 @@
  *                                       |_|
  *  07.02.2018
  */
-package Core;
+package pokemonopenworld.Core;
 
 import java.awt.*;
 import javax.swing.*;

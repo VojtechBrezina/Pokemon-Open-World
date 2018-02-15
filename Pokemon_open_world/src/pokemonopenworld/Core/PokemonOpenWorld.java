@@ -6,19 +6,25 @@
  *                                       |_|
  *  07.02.2018
  */
-package Core;
 
-import java.awt.*;
+package pokemonopenworld.Core;
+
+import pokemonopenworld.Core.MyWindow;
+import java.net.MalformedURLException;
+import java.util.Scanner;
+
 /**
  *
  * @author 
  */
-public class MyCanvas extends Canvas {
+public class PokemonOpenWorld {
     
-    @Override
-    public void paint(Graphics g){
-        super.paint(g);
-        
-        g.drawString("CS", 50, 50);
+    /**
+     * @param args the command line arguments
+     * @throws java.net.MalformedURLException
+     */
+    public static void main(String[] args) throws MalformedURLException{
+
     }
+    
 }
