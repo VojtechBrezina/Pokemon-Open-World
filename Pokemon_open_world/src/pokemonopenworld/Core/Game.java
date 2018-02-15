@@ -1,7 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*                                                                          
+ * _____     _                                                         _   _ 
+ *|  _  |___| |_ ___ _____ ___ ___    ___ ___ ___ ___    _ _ _ ___ ___| |_| |
+ *|   __| . | '_| -_|     | . |   |  | . | . | -_|   |  | | | | . |  _| | . |
+ *|__|  |___|_,_|___|_|_|_|___|_|_|  |___|  _|___|_|_|  |_____|___|_| |_|___|
+ *                                       |_|
+ *  15.02.2018
  */
 package pokemonopenworld.Core;
 
@@ -9,7 +12,7 @@ import pokemonopenworld.GameResources.*;
 
 /**
  *
- * @author Vojta
+ * @author
  */
 public class Game {
     private MyWindow window;
