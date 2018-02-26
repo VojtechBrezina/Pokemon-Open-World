@@ -18,7 +18,14 @@ public class MyWindow {
     private final JFrame frame;
     private final MyCanvas canvas;
     
-     MyWindow(int width, int height, String title, Image icon, Cursor cursor) {
+    
+    public MyWindow(int width, int height){
+        this(width, height, "Pokémon open world", null, null);
+    }
+    public MyWindow(int width, int height, String title){
+        this(width, height, title, null, null);
+    }
+    public  MyWindow(int width, int height, String title, Image icon, Cursor cursor) {
         canvas = new MyCanvas();
         frame = new JFrame(title);
         
@@ -26,32 +33,41 @@ public class MyWindow {
         
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.setLocationRelativeTo(null);
-        frame.setCursor(cursor);
+        if(cursor != null)
+            frame.setCursor(cursor);
         frame.add(canvas);
         frame.pack();
         frame.setResizable(false);
         
-        frame.setIconImage(icon);
+        if(icon != null)
+            frame.setIconImage(icon);
         
         frame.setVisible(true);
     }
      
-     public void resize(Dimension size){
-         resize(size.width, size.height);
-     }
-     public void resize(int width, int height){
-         frame.setResizable(true);
-         canvas.setSize(width, height);
-         frame.pack();
-         frame.setResizable(false);
-     }
+    public void resize(Dimension size){
+        resize(size.width, size.height);
+    }
+    public void resize(int width, int height){
+        frame.setResizable(true);
+        canvas.setSize(width, height);
+        frame.pack();
+        frame.setResizable(false);
+    }
      
-     public void render(){
-         canvas.paint(canvas.getGraphics());
-     }
+    public void render(){
+       canvas.paint(canvas.getGraphics());
+    }
      
-     public void dispose(){
-         frame.dispose();
-     }
+    public void dispose(){
+       frame.dispose();
+    }
+    
+    public void setCursor(Cursor cursor){
+        frame.setCursor(cursor);
+    }
 
+    public void setIconImage(Image icon){
+        frame.setIconImage(icon);
+    }
 }

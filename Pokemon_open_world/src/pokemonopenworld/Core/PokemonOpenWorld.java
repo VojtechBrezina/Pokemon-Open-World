@@ -9,9 +9,7 @@
 
 package pokemonopenworld.Core;
 
-import pokemonopenworld.Core.MyWindow;
 import java.net.MalformedURLException;
-import java.util.Scanner;
 
 /**
  *
@@ -24,7 +22,8 @@ public class PokemonOpenWorld {
      * @throws java.net.MalformedURLException
      */
     public static void main(String[] args) throws MalformedURLException{
-
+        Game game = new Game();
+        
     }
     
 }

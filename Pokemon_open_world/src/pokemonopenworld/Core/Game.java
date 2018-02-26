@@ -16,6 +16,10 @@ import pokemonopenworld.GameResources.*;
  */
 public class Game {
     private MyWindow window;
-    private boolean ended = false;
     private ResourcePack activePack;
+    
+    public Game(){
+        window = new MyWindow(640, 360);
+        //TODO:
+    }
 }
