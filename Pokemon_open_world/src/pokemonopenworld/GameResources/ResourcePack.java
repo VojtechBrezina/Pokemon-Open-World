@@ -50,7 +50,7 @@ public class ResourcePack {
                 toReturn += "empty";
                 break;
             case LOADING:
-                toReturn += "loaded from " + getLoadingProgress() + "%";
+                toReturn += "loaded from " + getLoadingPercentage() + "%";
                 break;
             case READY:
                 toReturn += "ready to use";

@@ -8,6 +8,7 @@
  */
 package pokemonopenworld.Core;
 
+import java.net.MalformedURLException;
 import pokemonopenworld.GameResources.*;
 
 /**
@@ -17,9 +18,15 @@ import pokemonopenworld.GameResources.*;
 public class Game {
     private MyWindow window;
     private ResourcePack activePack;
+    private ResourcePackLoader activePackLoader;
     
-    public Game(){
+    public Game() throws MalformedURLException{
         window = new MyWindow(640, 360);
+        activePack = new ResourcePack();
+        
+        while(activePack.getLoadingPercentage() != 100){
+            
+        }
         //TODO:
     }
 }
