@@ -31,6 +31,7 @@ public class ImageGameResource extends GameResource {
         sourceAtlas = null;
         atlasPos = -1;
     }
+    //Kdo vi, k cemu je tohle dobre...
     public ImageGameResource(String name, AtlasGameResource source, int atlasPos) throws MalformedURLException {
         super(name, null);
         image = null;
@@ -41,7 +42,7 @@ public class ImageGameResource extends GameResource {
     
     @Override
     public boolean load(){
-        if(fromAtlas){
+        if(!fromAtlas){
             ImageIcon icon = new ImageIcon(path);
             image = icon.getImage();
             image = ImageTransparentBackgroundConverter.makeBackgroundTransparent(image);
@@ -70,8 +71,8 @@ public class ImageGameResource extends GameResource {
         if(fromAtlas)
             toReturn += "in atlas (" + sourceAtlas.toString() + ")";
         else
-            toReturn += "on path" + path;
-        toReturn += " and called \"" + name + "\" and ";
+            toReturn += "on path \"" + path;
+        toReturn += "\" and called \"" + name + "\" and ";
         if(!getEmpty())
             toReturn += "sized " + image.getWidth(null) + "x" + image.getHeight(null);
         else{

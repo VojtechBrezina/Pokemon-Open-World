@@ -21,8 +21,11 @@ public class ResourcePack {
     private int loadingProgress;
     private GameResource[] resources;
     
-    private static final int RESOURCES_COUNT = 2;
+    private static final int RESOURCES_COUNT = 3;
     
+    public static final int MISSING_BITMAP_RESOURCE_ID = 0;
+    public static final int ICON_RESOURCE_ID = 1;
+    public static final int CURSOR_IMAGE_RESOURCE_ID = 2;
     
     public static enum State{
         EMPTY,
@@ -32,10 +35,10 @@ public class ResourcePack {
     
         
     public ResourcePack() throws MalformedURLException{
-        this(new URL("VanillaPack"));
+        this(new URL("VanillaPack"));//Hardly broken, don't even know, what was I thinking !!!
     }
     public ResourcePack(URL path){
-        name = path.getFile(); //TODO: packs should be named by their info.txt file
+        name = path.toString(); //TODO: packs should be named by their info.txt file
         this.path = path;
         state = State.EMPTY;
         loadingProgress = 0;
@@ -58,15 +61,43 @@ public class ResourcePack {
         return toReturn;
     }
     
+    public GameResource getResource(int id){
+        return resources[id];
+    }
+    
     public int getLoadingProgress(){
         return loadingProgress;
     }
     
     public double getLoadingPercentage(){
-        return RESOURCES_COUNT / loadingProgress * 100.0;
+        return 100.0 * loadingProgress  / RESOURCES_COUNT;
     }
     
-    public void load(){
+    public State getState(){
+        return state;
+    }
+    
+    public void load() throws MalformedURLException{
+        state = State.LOADING;
         
+        System.out.println("Loading resources...");
+        
+        resources = new GameResource[]{
+            new ImageGameResource("Missing bitmap", new URL(path, "img/wip.PNG")),
+            new ImageGameResource("Icon image", new URL(path, "img/ikona.png")),
+            new ImageGameResource("Cursor image", new URL(path, "img/kurzor.png"))
+        };
+        
+        loadingProgress = 0;
+        for(int i = 0; i < RESOURCES_COUNT; i++){
+            while(resources[loadingProgress].getEmpty())
+                resources[loadingProgress]. load();
+            loadingProgress++;
+            System.out.println(resources[loadingProgress - 1].toString());
+        }
+        
+        System.out.println("\nDone!");
+        
+        state = State.READY;
     }
 }

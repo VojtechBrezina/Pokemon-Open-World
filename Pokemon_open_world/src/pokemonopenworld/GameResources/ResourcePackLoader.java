@@ -9,12 +9,16 @@
  */
 package pokemonopenworld.GameResources;
 
+import java.net.MalformedURLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author 
  */
 public class ResourcePackLoader extends Thread {
-    private ResourcePack pack;
+    private final ResourcePack pack;
     
     
     public ResourcePackLoader(ResourcePack pack){
@@ -24,6 +28,10 @@ public class ResourcePackLoader extends Thread {
     
     @Override
     public void run(){
-        pack.load();
+        try {
+            pack.load();
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(ResourcePackLoader.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

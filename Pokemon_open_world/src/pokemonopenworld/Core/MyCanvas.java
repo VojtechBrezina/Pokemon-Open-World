@@ -19,6 +19,5 @@ public class MyCanvas extends Canvas {
     public void paint(Graphics g){
         super.paint(g);
         
-        g.drawString("CS", 50, 50);
     }
 }

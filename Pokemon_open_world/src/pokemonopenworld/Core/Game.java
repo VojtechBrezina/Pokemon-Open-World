@@ -8,7 +8,8 @@
  */
 package pokemonopenworld.Core;
 
-import java.net.MalformedURLException;
+import java.awt.*;
+import java.net.*;
 import pokemonopenworld.GameResources.*;
 
 /**
@@ -16,17 +17,25 @@ import pokemonopenworld.GameResources.*;
  * @author
  */
 public class Game {
-    private MyWindow window;
-    private ResourcePack activePack;
-    private ResourcePackLoader activePackLoader;
+    private final MyWindow window;
+    private final ResourcePack activePack;
+    private final ResourcePackLoader activePackLoader;
     
     public Game() throws MalformedURLException{
-        window = new MyWindow(640, 360);
-        activePack = new ResourcePack();
+        activePack = new ResourcePack(getClass().getResource("../VanillaPack/"));
         
-        while(activePack.getLoadingPercentage() != 100){
-            
-        }
+        activePackLoader = new ResourcePackLoader(activePack);
+        
+        activePackLoader.start();
+        
+        while(activePack.getLoadingProgress() < ResourcePack.CURSOR_IMAGE_RESOURCE_ID + 1)
+            ;
+        window = new MyWindow(640, 360, "Pokémon open world", ((ImageGameResource)activePack.getResource(ResourcePack.ICON_RESOURCE_ID)).getImage(),
+        Toolkit.getDefaultToolkit().createCustomCursor(((ImageGameResource)activePack.getResource(ResourcePack.CURSOR_IMAGE_RESOURCE_ID)).getImage(), new Point(0, 0), "Pokebal cursor"));
+        while(activePack.getState() != ResourcePack.State.READY)
+            ;
+        
+        
         //TODO:
     }
 }
