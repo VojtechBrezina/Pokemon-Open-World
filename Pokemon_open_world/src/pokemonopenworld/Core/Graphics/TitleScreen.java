@@ -4,23 +4,25 @@
  *|   __| . | '_| -_|     | . |   |  | . | . | -_|   |  | | | | . |  _| | . |
  *|__|  |___|_,_|___|_|_|_|___|_|_|  |___|  _|___|_|_|  |_____|___|_| |_|___|
  *                                       |_|
- *  07.02.2018
+ *  14.03.2018
  */
-package pokemonopenworld.Core;
+package pokemonopenworld.Core.Graphics;
 
 import java.awt.*;
-import pokemonopenworld.Core.Graphics.*;
 /**
  *
- * @author 
+ * @author
  */
-public class MyCanvas extends Canvas {
-    public Screen activeScreen = null;
+public class TitleScreen extends Screen {
+    private long lastAnimationStart;
+    
+    public TitleScreen(){
+        super();
+        
+    }
     
     @Override
-    public void paint(Graphics g){
-        super.paint(g);
-        if(activeScreen != null)
-            activeScreen.draw(g);
+    public void draw(Graphics graphics){
+        
     }
 }

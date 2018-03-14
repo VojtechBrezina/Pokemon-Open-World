@@ -10,6 +10,7 @@ package pokemonopenworld.Core;
 
 import java.awt.*;
 import javax.swing.*;
+import pokemonopenworld.Core.Graphics.*;
 /**
  *
  * @author 
@@ -55,6 +56,7 @@ public class MyWindow {
         frame.setResizable(false);
     }
      
+    //why did I put this in here ... ?
     public void render(){
        canvas.paint(canvas.getGraphics());
     }
@@ -69,5 +71,13 @@ public class MyWindow {
 
     public void setIconImage(Image icon){
         frame.setIconImage(icon);
+    }
+    
+    public void setActiveScreen(Screen newActiveScreen){
+        canvas.activeScreen = newActiveScreen;
+    }
+    
+    public Screen getActiveScreen(){
+        return canvas.activeScreen;
     }
 }
