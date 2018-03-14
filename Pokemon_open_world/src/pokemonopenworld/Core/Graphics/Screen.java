@@ -4,21 +4,28 @@
  *|   __| . | '_| -_|     | . |   |  | . | . | -_|   |  | | | | . |  _| | . |
  *|__|  |___|_,_|___|_|_|_|___|_|_|  |___|  _|___|_|_|  |_____|___|_| |_|___|
  *                                       |_|
- *  07.02.2018
+ *  14.03.2018
  */
-package pokemonopenworld.Core;
+package pokemonopenworld.Core.Graphics;
 
 import java.awt.*;
+
 /**
  *
  * @author 
  */
-public class MyCanvas extends Canvas {
+public class Screen {
+    protected static int size = 0;
     
+    public static void setSize(int newSize){
+        size = newSize;
+    }
     
-    @Override
-    public void paint(Graphics g){
-        super.paint(g);
+    public Screen(){
+        
+    }
+    
+    public void draw(Graphics graphics){
         
     }
 }
