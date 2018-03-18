@@ -37,5 +37,5 @@ public class ImageTransparentBackgroundConverter {
     public static Image makeBackgroundTransparent(Image image) {
         ImageProducer ip = new FilteredImageSource(image.getSource(), FILTER);
         return Toolkit.getDefaultToolkit().createImage(ip);
-  }
+    }
 }

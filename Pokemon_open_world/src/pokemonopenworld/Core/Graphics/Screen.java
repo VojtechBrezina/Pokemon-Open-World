@@ -15,10 +15,12 @@ import java.awt.*;
  * @author 
  */
 public class Screen {
-    protected static int size = 0;
+    protected static int width = 0;
+    protected static int height = 0;
     
     public static void setSize(int newSize){
-        size = newSize;
+        width = newSize;
+        height = newSize / 16 * 9;
     }
     
     public Screen(){

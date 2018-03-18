@@ -21,11 +21,12 @@ public class ResourcePack {
     private int loadingProgress;
     private GameResource[] resources;
     
-    private static final int RESOURCES_COUNT = 3;
+    private static final int RESOURCES_COUNT = 4;
     
-    public static final int MISSING_BITMAP_RESOURCE_ID = 0;
-    public static final int ICON_RESOURCE_ID = 1;
+    public static final int MISSING_BITMAP_IMAGE_RESOURCE_ID = 0;
+    public static final int ICON_IMAGE_RESOURCE_ID = 1;
     public static final int CURSOR_IMAGE_RESOURCE_ID = 2;
+    public static final int LOADING_BACKGROUND_IMAGE_RESOURCE_ID = 3;
     
     public static enum State{
         EMPTY,
@@ -85,13 +86,14 @@ public class ResourcePack {
         resources = new GameResource[]{
             new ImageGameResource("Missing bitmap", new URL(path, "img/wip.PNG")),
             new ImageGameResource("Icon image", new URL(path, "img/ikona.png")),
-            new ImageGameResource("Cursor image", new URL(path, "img/kurzor.png"))
+            new ImageGameResource("Cursor image", new URL(path, "img/kurzor.png")),
+            new ImageGameResource("Loading screen background", new URL(path, "img/load_n.PNG"))
         };
         
         loadingProgress = 0;
         for(int i = 0; i < RESOURCES_COUNT; i++){
             while(resources[loadingProgress].getEmpty())
-                resources[loadingProgress]. load();
+                resources[loadingProgress].load();
             loadingProgress++;
             System.out.println(resources[loadingProgress - 1].toString());
         }

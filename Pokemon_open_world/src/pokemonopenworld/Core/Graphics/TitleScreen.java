@@ -9,6 +9,8 @@
 package pokemonopenworld.Core.Graphics;
 
 import java.awt.*;
+import java.time.Instant;
+import java.util.Date;
 /**
  *
  * @author
@@ -18,11 +20,20 @@ public class TitleScreen extends Screen {
     
     public TitleScreen(){
         super();
-        
+        resetAnimation();
+    }
+    
+    private void resetAnimation(){
+        lastAnimationStart = Date.from(Instant.now()).getTime();
+    }
+    
+    private int getAnimationProgress(){
+        return (int)(Date.from(Instant.now()).getTime() - lastAnimationStart);
     }
     
     @Override
     public void draw(Graphics graphics){
-        
+        graphics.setColor(Color.red);
+        graphics.clearRect(0, 0, width, height);
     }
 }

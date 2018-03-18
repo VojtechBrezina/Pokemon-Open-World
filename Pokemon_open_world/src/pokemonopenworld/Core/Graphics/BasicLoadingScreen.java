@@ -16,15 +16,17 @@ import java.awt.*;
  */
 public class BasicLoadingScreen extends Screen{
     private double progress;
-    private String text;
+    private String stateText;
+    private Image background;
     
-    public BasicLoadingScreen(){
+    public BasicLoadingScreen(String stateText, Image background){
         super();
-        
+        this.stateText = stateText;
+        this.background = background;
     }
     
     @Override
     public void draw(Graphics graphics){
-        
+        graphics.drawImage(background, 0, 0, width, height, null);
     }
 }
