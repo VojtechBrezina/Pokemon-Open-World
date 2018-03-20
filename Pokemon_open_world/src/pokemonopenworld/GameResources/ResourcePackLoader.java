@@ -22,6 +22,7 @@ public class ResourcePackLoader extends Thread {
     
     
     public ResourcePackLoader(ResourcePack pack){
+        this.setName("Resource pack loader");
         this.pack = pack;
     }
     

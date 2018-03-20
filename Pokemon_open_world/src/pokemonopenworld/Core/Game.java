@@ -37,15 +37,14 @@ public class Game {
         window = new MyWindow(640, 360, "Pokémon open world", ((ImageGameResource)activePack.getResource(ResourcePack.ICON_IMAGE_RESOURCE_ID)).getImage(),
         Toolkit.getDefaultToolkit().createCustomCursor(((ImageGameResource)activePack.getResource(ResourcePack.CURSOR_IMAGE_RESOURCE_ID)).getImage(), new Point(0, 0), "Pokebal cursor"));
         Screen.setSize(640);
+        
         while(activePack.getLoadingProgress() < ResourcePack.LOADING_BACKGROUND_IMAGE_RESOURCE_ID + 1)
             ;
         window.setActiveScreen(new BasicLoadingScreen("", ((ImageGameResource)activePack.getResource(ResourcePack.LOADING_BACKGROUND_IMAGE_RESOURCE_ID)).getImage()));
+        
         while(activePack.getState() != ResourcePack.State.READY)
             ;
-        
         window.setActiveScreen(new TitleScreen());
-        while(true)
-            ;
         
         //TODO:
     }

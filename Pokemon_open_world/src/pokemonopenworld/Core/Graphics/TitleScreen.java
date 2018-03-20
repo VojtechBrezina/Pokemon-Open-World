@@ -16,24 +16,21 @@ import java.util.Date;
  * @author
  */
 public class TitleScreen extends Screen {
-    private long lastAnimationStart;
     
     public TitleScreen(){
         super();
-        resetAnimation();
-    }
-    
-    private void resetAnimation(){
-        lastAnimationStart = Date.from(Instant.now()).getTime();
     }
     
     private int getAnimationProgress(){
-        return (int)(Date.from(Instant.now()).getTime() - lastAnimationStart);
+        return (int)(Math.floorMod(Date.from(Instant.now()).getTime(), width));
     }
     
     @Override
     public void draw(Graphics graphics){
-        graphics.setColor(Color.red);
-        graphics.clearRect(0, 0, width, height);
+        int progress = getAnimationProgress();
+        graphics.setColor(Color.ORANGE);
+        graphics.fillRect(0, 0, progress, height);
+        graphics.setColor(Color.GREEN);
+        graphics.fillRect(progress, 0, width - progress, height);
     }
 }

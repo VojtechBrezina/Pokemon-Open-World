@@ -95,7 +95,8 @@ public class ResourcePack {
             while(resources[loadingProgress].getEmpty())
                 resources[loadingProgress].load();
             loadingProgress++;
-            System.out.println(resources[loadingProgress - 1].toString());
+            System.out.print("*");
+            //System.out.println(resources[loadingProgress - 1].toString());
         }
         
         System.out.println("\nDone!");

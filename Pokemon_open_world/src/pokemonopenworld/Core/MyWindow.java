@@ -18,6 +18,7 @@ import pokemonopenworld.Core.Graphics.*;
 public class MyWindow {
     private final JFrame frame;
     private final MyCanvas canvas;
+    private final MyCanvasRenderer renderer;
     
     
     public MyWindow(int width, int height){
@@ -28,6 +29,7 @@ public class MyWindow {
     }
     public  MyWindow(int width, int height, String title, Image icon, Cursor cursor) {
         canvas = new MyCanvas();
+        renderer = new MyCanvasRenderer(canvas);
         frame = new JFrame(title);
         
         canvas.setSize(width, height);
@@ -44,8 +46,24 @@ public class MyWindow {
             frame.setIconImage(icon);
         
         frame.setVisible(true);
+        
+        renderer.start();
     }
      
+    public void setVisible(boolean visible){
+        if(visible == frame.isVisible())
+            return;
+        
+        if(visible){
+            frame.setVisible(visible);
+            renderer.start();
+        }   
+        else{
+            renderer.deactivate();
+            frame.setVisible(visible);
+        }
+    }
+    
     public void resize(Dimension size){
         resize(size.width, size.height);
     }

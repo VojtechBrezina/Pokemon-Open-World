@@ -4,27 +4,31 @@
  *|   __| . | '_| -_|     | . |   |  | . | . | -_|   |  | | | | . |  _| | . |
  *|__|  |___|_,_|___|_|_|_|___|_|_|  |___|  _|___|_|_|  |_____|___|_| |_|___|
  *                                       |_|
- *  07.02.2018
+ *  20.03.2018
  */
-
 package pokemonopenworld.Core;
-
-import java.net.MalformedURLException;
 
 /**
  *
- * @author 
+ * @author
  */
-public class PokemonOpenWorld {
+public class MyCanvasRenderer extends Thread {
+    private final MyCanvas canvas;
+    private boolean active = false;
     
-    /**
-     * @param args the command line arguments
-     * @throws java.net.MalformedURLException
-     */
-    public static void main(String[] args) throws MalformedURLException{
-        System.out.println("Hi !");
-        Game game = new Game();
-        
+    public MyCanvasRenderer(MyCanvas canvas){
+        super();
+        this.canvas = canvas;
     }
     
+    public void deactivate(){
+        active = false;
+    }
+    
+    @Override
+    public void run(){
+        active = true;
+        while(active)
+            canvas.paint(canvas.getGraphics());
+    }
 }
