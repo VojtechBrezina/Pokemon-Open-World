@@ -18,6 +18,7 @@ import java.net.*;
 public class GameResource {
     protected String name;
     protected URL path;
+    protected int failCount;
     
     public GameResource(String name, URL path) throws MalformedURLException{
         this.name = name;

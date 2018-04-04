@@ -78,6 +78,7 @@ public class ResourcePack {
         return state;
     }
     
+    @SuppressWarnings("empty-statement")
     public void load() throws MalformedURLException{
         state = State.LOADING;
         
@@ -92,8 +93,8 @@ public class ResourcePack {
         
         loadingProgress = 0;
         for(int i = 0; i < RESOURCES_COUNT; i++){
-            while(resources[loadingProgress].getEmpty())
-                resources[loadingProgress].load();
+            while(!resources[loadingProgress].load())
+                ;
             loadingProgress++;
             System.out.print("*");
             //System.out.println(resources[loadingProgress - 1].toString());

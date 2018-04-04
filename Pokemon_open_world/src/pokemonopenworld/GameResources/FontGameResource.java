@@ -5,35 +5,23 @@
  *  |   __| . | '_| -_|     | . |   |  | . | . | -_|   |  | | | | . |  _| | . |
  *  |__|  |___|_,_|___|_|_|_|___|_|_|  |___|  _|___|_|_|  |_____|___|_| |_|___|
  *                                         |_|
- *  10.02.2018
+ *  02.04.2018
  */
 package pokemonopenworld.GameResources;
 
 import java.net.MalformedURLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.net.URL;
 
 /**
  *
  * @author 
  */
-public class ResourcePackLoader extends Thread {
-    private final ResourcePack pack;
+public class FontGameResource extends GameResource{
+    //some image to be cut in pieces... and array of coordinates maybe...
     
-    
-    public ResourcePackLoader(ResourcePack pack){
-        super();
-        setName("Resource pack loader");
-        this.pack = pack;
+    public FontGameResource(String name, URL path) throws MalformedURLException{
+        super(name, path);
     }
     
     
-    @Override
-    public void run(){
-        try {
-            pack.load();
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(ResourcePackLoader.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 }

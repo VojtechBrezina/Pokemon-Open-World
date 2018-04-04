@@ -10,9 +10,9 @@
 package pokemonopenworld.GameResources;
 
 import java.awt.*;
+import java.io.IOException;
 import java.net.*;
-import javax.swing.*;
-
+import javax.imageio.*;
 
 /**
  *
@@ -22,36 +22,49 @@ public class ImageGameResource extends GameResource {
     private Image image;
     private final boolean fromAtlas;
     private final AtlasGameResource sourceAtlas;
-    private final int atlasPos;
+    private final int atlasPosX;
+    private final int atlasPosY;
 
     public ImageGameResource(String name, URL path) throws MalformedURLException {
         super(name, path);
         image = null;
         fromAtlas = false;
         sourceAtlas = null;
-        atlasPos = -1;
+        atlasPosX = -1;
+        atlasPosY = -1;
     }
     //Kdo vi, k cemu je tohle dobre...
-    public ImageGameResource(String name, AtlasGameResource source, int atlasPos) throws MalformedURLException {
+    public ImageGameResource(String name, AtlasGameResource source, int atlasPosX, int atlasPosY) throws MalformedURLException {
         super(name, null);
         image = null;
         fromAtlas = true;
         sourceAtlas = source;
-        this.atlasPos = atlasPos;
+        this.atlasPosX = atlasPosX;
+        this.atlasPosY = atlasPosY;
     }
     
     @Override
     public boolean load(){
         if(!fromAtlas){
-            ImageIcon icon = new ImageIcon(path);
-            image = icon.getImage();
-            image = ImageTransparentBackgroundConverter.makeBackgroundTransparent(image);
+            try{
+            image = ImageTransparentBackgroundConverter.makeBackgroundTransparent(ImageIO.read(path));
+            }catch(IOException e){
+                //copy from default pack I guess
+            }
+            
         }else{
             if(!sourceAtlas.getEmpty()){
                 
                 //when the AtlasGameResource class is ready to use
             }
         }
+       if(getEmpty())
+           failCount++;
+       else{
+           System.out.print(failCount);
+           failCount = 0;
+       }
+           
         return !getEmpty();
     }
     

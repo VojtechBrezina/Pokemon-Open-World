@@ -15,8 +15,7 @@ import pokemonopenworld.Core.Graphics.*;
  *
  * @author 
  */
-public class MyWindow {
-    private final JFrame frame;
+public class MyWindow extends JFrame{
     private final MyCanvas canvas;
     private final MyCanvasRenderer renderer;
     
@@ -28,68 +27,62 @@ public class MyWindow {
         this(width, height, title, null, null);
     }
     public  MyWindow(int width, int height, String title, Image icon, Cursor cursor) {
+        super(title);
+        
         canvas = new MyCanvas();
         renderer = new MyCanvasRenderer(canvas);
-        frame = new JFrame(title);
+        
         
         canvas.setSize(width, height);
         
-        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        setLocationRelativeTo(null);
         if(cursor != null)
-            frame.setCursor(cursor);
-        frame.add(canvas);
-        frame.pack();
-        frame.setResizable(false);
+            setCursor(cursor);
+        add(canvas);
+        pack();
+        setResizable(false);
         
         if(icon != null)
-            frame.setIconImage(icon);
+            setIconImage(icon);
         
-        frame.setVisible(true);
+        setVisible(true);
         
         renderer.start();
     }
      
+    @Override
     public void setVisible(boolean visible){
-        if(visible == frame.isVisible())
+        super.setVisible(visible);
+        
+        if(visible == isVisible())
             return;
         
         if(visible){
-            frame.setVisible(visible);
             renderer.start();
         }   
         else{
             renderer.deactivate();
-            frame.setVisible(visible);
         }
     }
     
+    @Override
     public void resize(Dimension size){
         resize(size.width, size.height);
     }
+    @Override
     public void resize(int width, int height){
-        frame.setResizable(true);
+        setResizable(true);
         canvas.setSize(width, height);
-        frame.pack();
-        frame.setResizable(false);
+        pack();
+        setResizable(false);
     }
      
     //why did I put this in here ... ?
     public void render(){
        canvas.paint(canvas.getGraphics());
     }
-     
-    public void dispose(){
-       frame.dispose();
-    }
-    
-    public void setCursor(Cursor cursor){
-        frame.setCursor(cursor);
-    }
 
-    public void setIconImage(Image icon){
-        frame.setIconImage(icon);
-    }
     
     public void setActiveScreen(Screen newActiveScreen){
         canvas.activeScreen = newActiveScreen;

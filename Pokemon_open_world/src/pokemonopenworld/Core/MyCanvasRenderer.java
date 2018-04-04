@@ -22,6 +22,7 @@ public class MyCanvasRenderer extends Thread {
     }
     
     public void deactivate(){
+        setName("Renderer of MyCanvas");
         active = false;
     }
     
