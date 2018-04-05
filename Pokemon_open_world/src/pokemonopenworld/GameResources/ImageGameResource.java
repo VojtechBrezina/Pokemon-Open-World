@@ -9,28 +9,27 @@
  */
 package pokemonopenworld.GameResources;
 
-import java.io.File;
 import org.w3c.dom.Document;
 import org.w3c.dom.*;
+import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.DocumentBuilder;
-import org.xml.sax.SAXException;
-import org.xml.sax.SAXParseException;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.imageio.*;
 
-import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.*;
-import javax.imageio.*;
-import javax.xml.parsers.ParserConfigurationException;
+
+
 
 /**
  *
  * @author
  */
 public class ImageGameResource extends GameResource {
-    private Image image;
-    private Image[] frames;
+    private BufferedImage image;
+    private BufferedImage[] frames;
     private int framesCount;
     private int framesPerSecond;
     private URL imagePath;
@@ -46,15 +45,34 @@ public class ImageGameResource extends GameResource {
     @Override
     public boolean load() throws MalformedURLException{   
         try{
+            int imageWidth;
+            int imageHeight;
+            int frameWidth;
+            
             if(imagePath == null || framesCount < 0 || framesPerSecond < 0){//incorrect parameers, need to reload them from the *.poi(xml) file
                 Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(path.toString());
                 Element rootElement = document.getDocumentElement(); //<imageResource>
                 
+                if(!rootElement.getNodeName().equals("imageRecource")){
+                    System.out.print("BROKEN!");
+                }
+                
                 imagePath = new URL(path, rootElement.getAttribute("fileName"));
                 framesCount = Integer.parseInt(rootElement.getAttribute("animationFramesCount"));
-                framesCount = Integer.parseInt(rootElement.getAttribute("animationFPS"));
+                framesPerSecond = Integer.parseInt(rootElement.getAttribute("animationFPS"));
             }
-            image = ImageTransparentBackgroundConverter.makeBackgroundTransparent(ImageIO.read(imagePath));
+            
+            image = (BufferedImage)ImageTransparentBackgroundConverter.makeBackgroundTransparent(ImageIO.read(imagePath));
+            
+            imageWidth = image.getWidth();
+            imageHeight = image.getHeight();
+            frameWidth = imageWidth / framesCount;
+            
+            for(int i = 0; i < framesCount; i++){
+                frames[i] = image.getSubimage(i * frameWidth, 0, frameWidth, imageHeight);
+            }
+            
+            frames = new BufferedImage[framesCount];
         }catch(IOException | NumberFormatException ionfe){
             //broken resource !!MUST NOT OCCUR AT VANILLA LEVEL!!
             System.out.println("The resource is broken and must be replaced with default pack.");
@@ -68,7 +86,7 @@ public class ImageGameResource extends GameResource {
             System.out.println("Badly configurated parser ?!?");
         }catch (SAXException saxe) {
             //nor this one ...
-            System.out.println("SAX exception ...");
+            System.out.println("SAX exception ...(broken resource file)");
         }
         
 
@@ -76,11 +94,11 @@ public class ImageGameResource extends GameResource {
         return !getEmpty();
     }
     
-    public void setImage(Image image){
+    public void setImage(BufferedImage image){
         this.image = image;
     }
     
-    public Image getImage(){
+    public BufferedImage getImage(){
         return image;
     }
     
