@@ -85,10 +85,10 @@ public class ResourcePack {
         System.out.println("Loading resources...");
         
         resources = new GameResource[]{
-            new ImageGameResource("Missing bitmap", new URL(path, "img/wip.PNG")),
-            new ImageGameResource("Icon image", new URL(path, "img/ikona.png")),
-            new ImageGameResource("Cursor image", new URL(path, "img/kurzor.png")),
-            new ImageGameResource("Loading screen background", new URL(path, "img/load_n.PNG"))
+            new ImageGameResource("Missing bitmap", new URL(path, "img/workInProgress.poi")),
+            new ImageGameResource("Icon image", new URL(path, "img/icon.poi")),
+            new ImageGameResource("Cursor image", new URL(path, "img/cursor.poi")),
+            new ImageGameResource("Loading screen background", new URL(path, "img/loadingScreen.poi"))
         };
         
         loadingProgress = 0;
