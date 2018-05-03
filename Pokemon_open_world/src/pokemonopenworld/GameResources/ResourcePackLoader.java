@@ -12,21 +12,21 @@ package pokemonopenworld.GameResources;
 import java.net.MalformedURLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import pokemonopenworld.Core.LoadingThread;
 
 /**
  *
  * @author 
  */
-public class ResourcePackLoader extends Thread {
+public class ResourcePackLoader extends LoadingThread {
     private final ResourcePack pack;
     
     
     public ResourcePackLoader(ResourcePack pack){
         super();
-        setName("Resource pack loader");
+        setName("Resource pack loader for \"" + pack.getName() + "\"");
         this.pack = pack;
     }
-    
     
     @Override
     public void run(){

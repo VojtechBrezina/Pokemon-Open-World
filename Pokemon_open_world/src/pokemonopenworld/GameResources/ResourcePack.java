@@ -62,6 +62,10 @@ public class ResourcePack {
         return toReturn;
     }
     
+    public String getName(){
+        return name;
+    }
+    
     public GameResource getResource(int id){
         return resources[id];
     }
