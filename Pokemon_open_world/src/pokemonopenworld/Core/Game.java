@@ -10,8 +10,6 @@ package pokemonopenworld.Core;
 
 import java.awt.*;
 import java.net.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import pokemonopenworld.GameResources.*;
 import pokemonopenworld.Core.Graphics.*;
 

@@ -15,7 +15,6 @@ import java.awt.*;
  * @author
  */
 public class BasicLoadingScreen extends Screen{
-    private double progress;
     private String stateText;
     private Image background;
     

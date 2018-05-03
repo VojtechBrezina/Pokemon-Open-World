@@ -57,7 +57,7 @@ public class ImageGameResource extends GameResource {
                     System.out.print("BROKEN!");
                 }
                 
-                imagePath = new URL(path, rootElement.getAttribute("fileName"));
+                imagePath = new URL(path, rootElement.getAttribute("filePath"));
                 framesCount = Integer.parseInt(rootElement.getAttribute("animationFramesCount"));
                 framesPerSecond = Integer.parseInt(rootElement.getAttribute("animationFPS"));
             }
@@ -66,7 +66,7 @@ public class ImageGameResource extends GameResource {
             
             imageWidth = image.getWidth();
             imageHeight = image.getHeight();
-            frameWidth = imageWidth / framesCount;
+            frameWidth = framesCount != 0 ? imageWidth / framesCount : imageWidth;
             
             for(int i = 0; i < framesCount; i++){
                 frames[i] = image.getSubimage(i * frameWidth, 0, frameWidth, imageHeight);

@@ -5,6 +5,7 @@
  *|__|  |___|_,_|___|_|_|_|___|_|_|  |___|  _|___|_|_|  |_____|___|_| |_|___|
  *                                       |_|
  *  08.02.2018
+ * "C:\Documents and settings\Vojta\Dokumenty\NetBeansProjects\PokemonOpenWorld\PokemonOpenWorld_Git\Pokemon-Open-World\Pokemon_open_world\dist\Pokemon_open_world.jar"
  */
 package pokemonopenworld.GameResources;
 
@@ -12,7 +13,7 @@ import java.net.*;
 
 /**
  *
- * @author 
+ * 
  */
 public class ResourcePack {
     private final String name;
