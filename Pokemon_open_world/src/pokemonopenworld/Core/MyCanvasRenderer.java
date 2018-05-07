@@ -7,22 +7,22 @@
  *  20.03.2018
  */
 package pokemonopenworld.Core;
-import java.awt.*;
-import javax.swing.*;
+
 /**
  *
+ * @author
  */
-public class CanvasRenderer extends Thread {
-    private final Canvas canvas;
+public class MyCanvasRenderer extends Thread {
+    private final MyCanvas canvas;
     private boolean active = false;
     
-    public CanvasRenderer(Canvas canvas){
+    public MyCanvasRenderer(MyCanvas canvas){
         super();
-        setName("Renderer for the Canvas component");
         this.canvas = canvas;
     }
     
     public void deactivate(){
+        setName("Renderer of MyCanvas");
         active = false;
     }
     

@@ -1,6 +1,6 @@
 <imageResource 
     filePath = "ikona.png" 
-    animationFramesCount = "1" 
+    animationFramesCount = "0" 
     animationFPS = "0" 
 />
 

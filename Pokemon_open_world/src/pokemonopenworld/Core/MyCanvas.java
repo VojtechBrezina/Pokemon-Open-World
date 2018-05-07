@@ -11,8 +11,8 @@ package pokemonopenworld.Core;
 import java.awt.*;
 import pokemonopenworld.Core.Graphics.*;
 /**
- *To be deleted !!!
- *  
+ *
+ * @author 
  */
 public class MyCanvas extends Canvas {
     public Screen activeScreen = null;
