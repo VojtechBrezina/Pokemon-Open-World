@@ -53,8 +53,8 @@ public class ImageGameResource extends GameResource {
                 Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(path.toString());
                 Element rootElement = document.getDocumentElement(); //<imageResource>
                 
-                if(!rootElement.getNodeName().equals("imageRecource")){
-                    System.out.print("BROKEN!");
+                if(!rootElement.getNodeName().equals("imageResource")){
+                    System.out.print(rootElement.getNodeName());
                 }
                 
                 imagePath = new URL(path, rootElement.getAttribute("filePath"));
