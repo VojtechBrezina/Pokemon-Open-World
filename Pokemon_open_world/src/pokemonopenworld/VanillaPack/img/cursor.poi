@@ -1,5 +1,5 @@
 <imageResource 
     filePath = "kurzor.png" 
-    animationFramesCount = "0" 
+    animationFramesCount = "1" 
     animationFPS = "0" 
 />

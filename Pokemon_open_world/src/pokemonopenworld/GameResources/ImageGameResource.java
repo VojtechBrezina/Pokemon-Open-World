@@ -66,27 +66,26 @@ public class ImageGameResource extends GameResource {
             
             imageWidth = image.getWidth();
             imageHeight = image.getHeight();
-            frameWidth = framesCount != 0 ? imageWidth / framesCount : imageWidth;
+            frameWidth = imageWidth / framesCount;
             
             for(int i = 0; i < framesCount; i++){
                 frames[i] = image.getSubimage(i * frameWidth, 0, frameWidth, imageHeight);
             }
             
             frames = new BufferedImage[framesCount];
-        }catch(IOException | NumberFormatException ionfe){
-            //broken resource !!MUST NOT OCCUR AT VANILLA LEVEL!!
-            System.out.println("The resource is broken and must be replaced with default pack.");
-            
-            //to make sure, that the pack loader notices something being wrong
-            image = null;
-            frames = null;
-            imagePath = null;
         } catch (ParserConfigurationException pce) {
             //hope, that isn't the case :)
             System.out.println("Badly configurated parser ?!?");
         }catch (SAXException saxe) {
             //nor this one ...
             System.out.println("SAX exception ...(broken resource file)");
+        }catch(Exception e){
+            //broken resource !!MUST NOT OCCUR AT VANILLA LEVEL!!
+            System.out.println("File will be replaced because it's missing or the file contains broken data.");
+            //to make sure, that the pack loader notices something being wrong
+            image = null;
+            frames = null;
+            imagePath = null;
         }
         
 

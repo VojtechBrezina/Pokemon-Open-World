@@ -16,8 +16,8 @@ import pokemonopenworld.Core.Graphics.*;
  * @author 
  */
 public class MyWindow extends JFrame{
-    private final MyCanvas canvas;
-    private final MyCanvasRenderer renderer;
+    private final Canvas canvas;
+    private final CanvasRenderer renderer;
     
     
     public MyWindow(int width, int height){
@@ -29,8 +29,8 @@ public class MyWindow extends JFrame{
     public  MyWindow(int width, int height, String title, Image icon, Cursor cursor) {
         super(title);
         
-        canvas = new MyCanvas();
-        renderer = new MyCanvasRenderer(canvas);
+        canvas = new Canvas();
+        renderer = new CanvasRenderer(canvas);
         
         
         canvas.setSize(width, height);
@@ -84,11 +84,11 @@ public class MyWindow extends JFrame{
     }
 
     
-    public void setActiveScreen(Screen newActiveScreen){
+    /*public void setActiveScreen(Screen newActiveScreen){
         canvas.activeScreen = newActiveScreen;
     }
     
     public Screen getActiveScreen(){
         return canvas.activeScreen;
-    }
+    }*/
 }
