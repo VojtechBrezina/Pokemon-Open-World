@@ -18,8 +18,8 @@ public class BasicLoadingScreen extends Screen{
     private String stateText;
     private Image background;
     
-    public BasicLoadingScreen(String stateText, Image background){
-        super();
+    public BasicLoadingScreen(int size, String stateText, Image background){
+        super(size);
         this.stateText = stateText;
         this.background = background;
     }

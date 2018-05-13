@@ -17,8 +17,8 @@ import java.util.Date;
  */
 public class TitleScreen extends Screen {
     
-    public TitleScreen(){
-        super();
+    public TitleScreen(int size){
+        super(size);
     }
     
     private int getAnimationProgress(){

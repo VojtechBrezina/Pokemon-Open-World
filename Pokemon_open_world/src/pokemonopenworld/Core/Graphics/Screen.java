@@ -14,7 +14,7 @@ import java.awt.*;
  *
  * @author 
  */
-public class Screen {
+public abstract class Screen {
     protected static int width = 0;
     protected static int height = 0;
     
@@ -23,11 +23,10 @@ public class Screen {
         height = newSize / 16 * 9;
     }
     
-    public Screen(){
-        
+    public Screen(int size){
+        width = size;
+        height = size / 16 * 9;
     }
     
-    public void draw(Graphics graphics){
-        
-    }
+    public abstract void draw(Graphics graphics);
 }

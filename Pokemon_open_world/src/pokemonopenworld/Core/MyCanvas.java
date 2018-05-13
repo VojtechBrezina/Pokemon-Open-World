@@ -5,6 +5,7 @@
  *|__|  |___|_,_|___|_|_|_|___|_|_|  |___|  _|___|_|_|  |_____|___|_| |_|___|
  *                                       |_|
  *  07.02.2018
+ * !!!invalid!!!
  */
 package pokemonopenworld.Core;
 
@@ -12,7 +13,6 @@ import java.awt.*;
 import pokemonopenworld.Core.Graphics.*;
 /**
  *
- * @author 
  */
 public class MyCanvas extends Canvas {
     public Screen activeScreen = null;

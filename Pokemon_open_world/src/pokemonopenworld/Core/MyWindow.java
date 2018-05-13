@@ -16,7 +16,7 @@ import pokemonopenworld.Core.Graphics.*;
  * @author 
  */
 public class MyWindow extends JFrame{
-    private final MyCanvas canvas;
+    private final Canvas canvas;
     private final MyCanvasRenderer renderer;
     
     

@@ -5,24 +5,27 @@
  *|__|  |___|_,_|___|_|_|_|___|_|_|  |___|  _|___|_|_|  |_____|___|_| |_|___|
  *                                       |_|
  *  20.03.2018
+ * !!!invalid!!!
  */
 package pokemonopenworld.Core;
+
+import java.awt.Canvas;
 
 /**
  *
  * @author
  */
 public class MyCanvasRenderer extends Thread {
-    private final MyCanvas canvas;
+    private final Canvas canvas;
     private boolean active = false;
     
-    public MyCanvasRenderer(MyCanvas canvas){
+    public MyCanvasRenderer(Canvas canvas){
         super();
+        setName("Renderer for Canvas");
         this.canvas = canvas;
     }
     
     public void deactivate(){
-        setName("Renderer of MyCanvas");
         active = false;
     }
     

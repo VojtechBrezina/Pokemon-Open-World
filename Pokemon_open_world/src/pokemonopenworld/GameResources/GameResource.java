@@ -15,7 +15,7 @@ import java.net.*;
  *
  * @author
  */
-public class GameResource {
+public abstract class GameResource {
     protected String name;
     protected URL path;
     
@@ -28,21 +28,6 @@ public class GameResource {
         return name;
     }
     
-    public boolean getEmpty(){
-        return true;
-    }
-    
-    
-    public boolean load() throws MalformedURLException{
-        return false;
-    }
-    
-    @Override
-    public String toString(){
-        String toReturn = "";
-        if(getEmpty())
-            toReturn += "empty ";
-        toReturn += "game resource called " + name;
-        return toReturn;
-    }
+    public abstract boolean getEmpty();
+    public abstract boolean load() throws MalformedURLException;
 }

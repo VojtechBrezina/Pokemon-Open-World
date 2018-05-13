@@ -23,5 +23,12 @@ public class FontGameResource extends GameResource{
         super(name, path);
     }
     
+    public boolean getEmpty(){
+        return true;//TODO:
+    }
+    
+    public boolean load(){
+        return false; //TODO:
+    }
     
 }
